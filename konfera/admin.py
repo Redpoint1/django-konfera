@@ -30,6 +30,9 @@ class EventAdmin(admin.ModelAdmin):
             'fields': ('date_created', 'date_modified'),
             'classes': ('collapse',),
         }),
+        (_('Social media'), {
+            'fields': ('social_media_list', 'social_media_meta',)
+        })
     )
     inlines = [
         SponsorshipInline,

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from konfera.models.abstract import FromToModel
+import konfera.fields as konfera_fields
 
 
 CONFERENCE = 'conference'
@@ -41,6 +42,10 @@ class Event(FromToModel):
     sponsors = models.ManyToManyField('Sponsor', blank=True, related_name='sponsored_events')
     footer_text = models.TextField(blank=True)
     analytics = models.TextField(blank=True)
+    social_media_list = konfera_fields.JSONField(blank=True, verbose_name=_('Social media list'),
+                                                 help_text=_('Input must be a valid JSON schema'))
+    social_media_meta = konfera_fields.JSONField(blank=True, verbose_name=_('Social media meta'),
+                                                 help_text=_('Input must be a valid JSON schema'))
 
     objects = EventManager()
 

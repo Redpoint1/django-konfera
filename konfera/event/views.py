@@ -61,7 +61,7 @@ def event_list(request):
 
 def event_details_view(request, slug):
     context = dict()
-
+    import json
     event = get_object_or_404(Event.objects.published(), slug=slug)
     context['event'] = event
     context['sponsors'] = event.sponsors.all()
